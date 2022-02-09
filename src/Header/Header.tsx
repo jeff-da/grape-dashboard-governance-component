@@ -34,23 +34,10 @@ import {
     ListItemText
 } from '@mui/material';
 
-import AssessmentIcon from '@mui/icons-material/Assessment';
-import GroupWorkIcon from '@mui/icons-material/GroupWork';
-import LinkOffIcon from '@mui/icons-material/LinkOff';
-import ContentCopyIcon from '@mui/icons-material/ContentCopy';
-import OpenInNewIcon from '@mui/icons-material/OpenInNew';
-import DashboardIcon from '@mui/icons-material/Dashboard';
-import ImageIcon from '@mui/icons-material/Image';
-import RssFeedIcon from '@mui/icons-material/RssFeed';
+
 import IconButton from '@mui/material/IconButton';
-import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 
 import DashboardOutlinedIcon from '@mui/icons-material/DashboardOutlined';
-import PhotoOutlinedIcon from '@mui/icons-material/PhotoOutlined';
-import InsertChartOutlinedIcon from '@mui/icons-material/InsertChartOutlined';
-
-import { truncate } from 'lodash';
-import RssFeed from '@mui/icons-material/RssFeed';
 
 require('@solana/wallet-adapter-react-ui/styles.css');
 
@@ -227,19 +214,21 @@ export function Header(props: any) {
             >
 
             <Box display='flex' flexGrow={1}>
-                <Typography
-                    component="h1"
-                    variant="h6"
-                    color="inherit"
-                    noWrap
-                    display='flex'
+                <Button
+                    variant="text"
+                    component={NavLink} color="inherit" to="/"
                 >
-                    <img src="/grape_white_logo.svg" height="40px" className="header-logo" alt="Grape" />
-                </Typography>
-                
-                <Tooltip title={`Dashboard`}><IconButton component={NavLink} color="inherit" to="/"><DashboardOutlinedIcon/></IconButton></Tooltip>
-                
-                {/*<Tooltip title={`Unlisted Offers`}><IconButton color="inherit" href="/unlistedoffers"><LocalOfferIcon /></IconButton></Tooltip>*/}
+                    <Typography
+                        component="h1"
+                        variant="h6"
+                        color="inherit"
+                        noWrap
+                        display='flex'
+                    >
+
+                        <img src="/grape_white_logo.svg" height="40px" className="header-logo" alt="Grape" />
+                    </Typography>
+                </Button>
             </Box>
             <div>
                 <WalletModalProvider>
