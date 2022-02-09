@@ -1,6 +1,7 @@
 # grape-dashboard-component
 This is an example of a component that we would be looking to have completed
-Using the Governance Program as an example
+
+This has been implemented for the Governance Program as an example:
 
 - Currently holdings deposited will show for Grape
 - Future enhancements should include
