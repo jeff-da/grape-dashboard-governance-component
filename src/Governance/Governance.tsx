@@ -1,6 +1,6 @@
-//import { getRealms, getVoteRecordsByVoter, getTokenOwnerRecordForRealm, getTokenOwnerRecordsByOwner, getGovernanceAccounts, pubkeyFilter, TokenOwnerRecord } from '@solana/spl-governance';
-import { PublicKey } from '@solana/web3.js';
+import { getRealms, getVoteRecordsByVoter, getTokenOwnerRecordForRealm, getTokenOwnerRecordsByOwner, getGovernanceAccounts, pubkeyFilter, TokenOwnerRecord } from '@solana/spl-governance';
 import { useConnection, useWallet } from '@solana/wallet-adapter-react';
+import { PublicKey } from '@solana/web3.js';
 import * as React from 'react';
 import { styled } from '@mui/material/styles';
 import {
@@ -20,7 +20,6 @@ import {
 } from '@mui/material/';
 
 import HowToVoteIcon from '@mui/icons-material/HowToVote';
-import { PretifyCommaNumber } from '../utils/grapeTools/PretifyCommaNumber';
 
 const StyledTable = styled(Table)(({ theme }) => ({
     '& .MuiTableCell-root': {
@@ -46,7 +45,7 @@ export function GovernanceView(props: any) {
             // - ADD ABILITY TO SHOW OPEN VOTES WITHIN A REALM
             // - ADD ABILITY TO VOTE
             // - ADD ABILITY TO WITHDRAW FROM REALMS
-            /*
+            
             const programId = new PublicKey('GovER5Lthms3bLBqWub97yVrMmEogzX7xNjdXpPPCVZw');
             const realmId = new PublicKey('By2sVGZXwfQq6rAiAM3rNPJ9iQfb5e2QhnF4YjJ4Bip'); // Grape RealmId
             const governingTokenMint = new PublicKey('8upjSpvjcdpuzhfR1zriwg5NXkwDruejqNE9WNbPRtyA'); // Grape Mint
@@ -67,7 +66,7 @@ export function GovernanceView(props: any) {
                 TokenOwnerRecord, [
                     pubkeyFilter(1 + 32 + 32, governingTokenOwner)!,
             ]);
-            */
+            
 
             //console.log("Realms: "+JSON.stringify(ownerRecordsAll));
 
