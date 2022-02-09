@@ -1,9 +1,8 @@
-import React, { FC, ReactNode, useCallback, useMemo } from 'react';
-import { styled, ThemeProvider } from '@mui/material/styles';
+import React, { useMemo } from 'react';
+import { ThemeProvider } from '@mui/material/styles';
 import { HashRouter, BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { GovernanceView } from "./Governance/Governance";
 import CssBaseline from '@mui/material/CssBaseline';
-import MuiDrawer from '@mui/material/Drawer';
 
 import {
   Box,
@@ -16,9 +15,8 @@ import {
 
 import Header from './Header/Header';
 import { SnackbarProvider } from 'notistack';
-import { useConnection, ConnectionProvider, WalletProvider, useWallet } from '@solana/wallet-adapter-react';
-import { WalletAdapterNetwork, WalletError, WalletNotConnectedError } from '@solana/wallet-adapter-base';
-import { Connection, Keypair, SystemProgram, Transaction, clusterApiUrl } from '@solana/web3.js';
+import { ConnectionProvider, WalletProvider, useWallet } from '@solana/wallet-adapter-react';
+import { WalletAdapterNetwork } from '@solana/wallet-adapter-base';
 
 import { useSnackbar } from 'notistack';
 
@@ -26,6 +24,7 @@ import ConfirmDialog from './components/ConfirmDialog/ConfirmDialog';
 
 //import { WalletDialogProvider, WalletDisconnectButton, WalletMultiButton } from '../WalletAdapterMui';
 
+/*
 import {
   LedgerWalletAdapter,
   PhantomWalletAdapter,
@@ -34,10 +33,21 @@ import {
   SolletExtensionWalletAdapter,
   SolletWalletAdapter,
   TorusWalletAdapter,
-  CloverWalletAdapter,
-  MathWalletAdapter,
-  Coin98WalletAdapter,
-  SolongWalletAdapter,
+  //CloverWalletAdapter,
+  //MathWalletAdapter,
+  //Coin98WalletAdapter,
+  //SolongWalletAdapter,
+} from '@solana/wallet-adapter-wallets';
+*/
+
+import {
+  getLedgerWallet,
+  getPhantomWallet,
+  getSlopeWallet,
+  getSolflareWallet,
+  getSolletExtensionWallet,
+  getSolletWallet,
+  getTorusWallet,
 } from '@solana/wallet-adapter-wallets';
 
 
@@ -65,7 +75,16 @@ function DashboardContent() {
   // You can also provide a custom RPC endpoint
   const endpoint = GRAPE_RPC_ENDPOINT; //useMemo(() => clusterApiUrl(network), [network]);
   const wallets = useMemo(() => [
-    
+    getPhantomWallet(),
+    getSolflareWallet(),
+    getSlopeWallet(),
+    getSolletWallet({ network }),
+    getSolletExtensionWallet({ network }),
+    //getLedgerWallet(),
+    //getTorusWallet({
+    //  options: { clientId: 'BCX2hQWDez2_qJhmSuQC7DXD4OG0VfGEFjCZfLar2EA5NvKyudCxOOlOcQ4YZbPGQhdwLonSXZr3i_siIJVhtwI' }
+    //}),
+    /*
     new PhantomWalletAdapter(),
     new SlopeWalletAdapter(),
     new SolflareWalletAdapter(),
@@ -73,24 +92,13 @@ function DashboardContent() {
     new LedgerWalletAdapter(),
     new SolletWalletAdapter({ network }),
     new SolletExtensionWalletAdapter({ network }),
-    
-    new CloverWalletAdapter(),
-    new MathWalletAdapter(),
-    new Coin98WalletAdapter(),
-    new SolongWalletAdapter(),
+    */
+    //new CloverWalletAdapter(),
+    //new MathWalletAdapter(),
+    //new Coin98WalletAdapter(),
+    //new SolongWalletAdapter(),
   ], [network]);
   
-  /*
-  const { enqueueSnackbar } = useSnackbar();
-  const onError = useCallback(
-      (error) => {
-          enqueueSnackbar(error.message ? `${error.name}: ${error.message}` : error.name, { variant: 'error' });
-          console.error(error);
-      },
-      [enqueueSnackbar]
-  );
-  */
-
   return (
     <>
     <ThemeProvider theme={grapeTheme}>
