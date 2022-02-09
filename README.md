@@ -1,4 +1,4 @@
-# grape-dashboard-component
+# grape-dashboard-governance-component
 This is an example of a component that we would be looking to have completed
 
 This has been implemented for the Governance Program as an example:
