@@ -37,6 +37,7 @@ export function GovernanceView(props: any) {
     const [realmsArray, setRealmsArray] = React.useState(new Array);
     const [voteRecords, setVoteRecords] = React.useState(null);
     const [tokenOwnerRecords, setOwnerRecords] = React.useState(null);
+    const [resume, setResume] = React.useState(null)
 
     const getGovernance = async () => {
         if (!loading){
@@ -58,7 +59,51 @@ export function GovernanceView(props: any) {
             const wallet = new PublicKey("DjsyGs6HpszmH9N4UJgr1huBrWgysvUc1gSBk8MPbNfY");
 
             console.log(moneyStreaming)
+
+            const listStreamsObject = {
+                treasurer: wallet
+            }
+
+            let treasurerStreams = await moneyStreaming.listStreams(listStreamsObject);
             
+            console.log(treasurerStreams)
+
+            let cachedStreams = await moneyStreaming.refreshStreams(treasurerStreams, wallet, wallet);
+
+            let resume: any = {
+                totalNet: 0,
+                incomingAmount: 0,
+                outgoingAmount: 0,
+                totalAmount: 0
+            };
+            
+            for (let stream of cachedStreams) {
+            
+                const streamIsOutgoing = 
+                    stream.treasurerAddress &&
+                    typeof stream.treasurerAddress !== 'string'
+                        ? stream.treasurerAddress.equals(wallet)
+                        : stream.treasurerAddress === wallet.toBase58();
+            
+                let streamBalance = 0;
+
+                console.log(stream)
+            
+                if (streamIsOutgoing) {
+                    streamBalance = stream.escrowUnvestedAmount;
+                    resume['outgoingAmount'] = resume['outgoingAmount'] + 1;  
+                } else {
+                    streamBalance = stream.escrowVestedAmount;
+                    resume['incomingAmount'] = resume['incomingAmount'] + 1;  
+                }
+            
+                resume['totalNet'] = resume['totalNet'] + streamBalance;
+            }
+            
+            resume['totalAmount'] = cachedStreams.length;
+            console.log('My money streams resume', resume);
+
+            /*
             const ownerRecords = await getTokenOwnerRecordForRealm(
                 connection, 
                 programId,
@@ -74,10 +119,11 @@ export function GovernanceView(props: any) {
                 TokenOwnerRecord, [
                     pubkeyFilter(1 + 32 + 32, governingTokenOwner)!,
             ]);
+            */
             
 
             //console.log("Realms: "+JSON.stringify(ownerRecordsAll));
-
+            setResume(resume)
             setLoading(false);
         } else{
 
@@ -111,7 +157,7 @@ export function GovernanceView(props: any) {
             </React.Fragment>
         )
     } else{
-        if (tokenOwnerRecords){
+        if (resume){
             return (
                 <React.Fragment>
                     <Grid item xs={12} md={12} lg={12}>
@@ -120,7 +166,7 @@ export function GovernanceView(props: any) {
                                 <Box sx={{ display: 'flex', alignItems: 'center' }}>
                                     <Box className="grape-dashboard-component-header" sx={{ m: 0, position: 'relative' }}>
                                         <Typography gutterBottom variant="h6" component="div" sx={{ m: 0, position: 'relative'}}>
-                                        GOVERNANCE
+                                        MeanFi
                                         </Typography>
                                     </Box>
                                 </Box>
@@ -130,8 +176,8 @@ export function GovernanceView(props: any) {
                                         <StyledTable sx={{ minWidth: 500 }} size="small" aria-label="Portfolio Table">
                                             <TableHead>
                                                 <TableRow>
-                                                    <TableCell><Typography variant="caption">Realm</Typography></TableCell>
-                                                    <TableCell align="right"><Typography variant="caption">Votes</Typography></TableCell>
+                                                    <TableCell><Typography variant="caption">Stream</Typography></TableCell>
+                                                    <TableCell align="right"><Typography variant="caption">Amount</Typography></TableCell>
                                                     <TableCell></TableCell>
                                                 </TableRow>
                                             </TableHead>
@@ -149,11 +195,11 @@ export function GovernanceView(props: any) {
                                                                 />
                                                             </Grid>
                                                             <Grid item sx={{ ml: 1 }}>
-                                                                    {'Grape Votes'}
+                                                                    {'Total'}
                                                             </Grid>
                                                         </Grid>
                                                     </TableCell>
-                                                    <TableCell align="right">{(parseInt(tokenOwnerRecords.account.governingTokenDepositAmount, 10))/1000000}</TableCell>
+                                                    <TableCell align="right">{(parseInt(resume['totalNet']))}</TableCell>
                                                     <TableCell align="right"><Button href='https://realms.today/dao/GRAPE' target='_blank'><HowToVoteIcon /></Button></TableCell>
                                                 </TableRow> 
                                             </TableBody>
