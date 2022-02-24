@@ -2416,6 +2416,23 @@
     prop-types "^15.7.2"
     react-is "^17.0.2"
 
+"@mean-dao/money-streaming@^1.7.8":
+  version "1.7.8"
+  resolved "https://registry.yarnpkg.com/@mean-dao/money-streaming/-/money-streaming-1.7.8.tgz#13173e62bacc3a862d85574ddfb2d818762b15d0"
+  integrity sha512-3698sJ2+Zq2ZyhvLQrjT+tvmQhl9sbI7+IQkn/A+kING4HX/LokIVvvLZeExVfnceESps/EDWbHogNOJVME4cA==
+  dependencies:
+    "@project-serum/anchor" "^0.18.2"
+    "@solana/spl-token" "^0.1.8"
+    "@solana/web3.js" "^1.30.2"
+    bn.js "^5.2.0"
+    borsh "^0.6.0"
+    buffer "^6.0.3"
+    buffer-layout "^1.2.2"
+    dotenv "10.0.0"
+    moment "^2.29.1"
+    prompt-sync "^4.2.0"
+    yaml "^1.10.2"
+
 "@mercurial-finance/optimist@~0.1.0":
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/@mercurial-finance/optimist/-/optimist-0.1.0.tgz#853f8032f4a48a94ae91d6a39251e975ebcfbe0f"
@@ -13332,6 +13349,13 @@ promise@^8.1.0:
   dependencies:
     asap "~2.0.6"
 
+prompt-sync@^4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/prompt-sync/-/prompt-sync-4.2.0.tgz#0198f73c5b70e3b03e4b9033a50540a7c9a1d7f4"
+  integrity sha512-BuEzzc5zptP5LsgV5MZETjDaKSWfchl5U9Luiu8SKp7iZWD5tZalOxvNcZRwv+d2phNFr8xlbxmFNcRKfJOzJw==
+  dependencies:
+    strip-ansi "^5.0.0"
+
 prompts@2.4.0:
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/prompts/-/prompts-2.4.0.tgz#4aa5de0723a231d1ee9121c40fdf663df73f61d7"
@@ -17309,7 +17333,7 @@ yallist@^4.0.0:
   resolved "https://registry.yarnpkg.com/yallist/-/yallist-4.0.0.tgz#9bb92790d9c0effec63be73519e11a35019a3a72"
   integrity sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==
 
-yaml@^1.10.0, yaml@^1.7.2:
+yaml@^1.10.0, yaml@^1.10.2, yaml@^1.7.2:
   version "1.10.2"
   resolved "https://registry.yarnpkg.com/yaml/-/yaml-1.10.2.tgz#2301c5ffbf12b467de8da2333a459e29e7920e4b"
   integrity sha512-r3vXyErRCYJ7wg28yvBY5VSoAF8ZvlcW9/BwUzEtUsjvX/DKs24dIkuwjtuprwJJHsbyUbLApepYTR1BN4uHrg==

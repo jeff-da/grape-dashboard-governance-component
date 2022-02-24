@@ -3,6 +3,8 @@ import { useConnection, useWallet } from '@solana/wallet-adapter-react';
 import { PublicKey } from '@solana/web3.js';
 import * as React from 'react';
 import { styled } from '@mui/material/styles';
+import { MoneyStreaming } from '@mean-dao/money-streaming';
+
 import {
   Typography,
   Button,
@@ -51,6 +53,12 @@ export function GovernanceView(props: any) {
             const governingTokenMint = new PublicKey('8upjSpvjcdpuzhfR1zriwg5NXkwDruejqNE9WNbPRtyA'); // Grape Mint
             const governingTokenOwner = publicKey;
 
+            const mspAccount = new PublicKey("H6wJxgkcc93yeUFnsZHgor3Q3pSWgGpEysfqKrwLtMko");
+            const moneyStreaming = new MoneyStreaming("https://api.mainnet-beta.solana.com", mspAccount);
+            const wallet = new PublicKey("DjsyGs6HpszmH9N4UJgr1huBrWgysvUc1gSBk8MPbNfY");
+
+            console.log(moneyStreaming)
+            
             const ownerRecords = await getTokenOwnerRecordForRealm(
                 connection, 
                 programId,
