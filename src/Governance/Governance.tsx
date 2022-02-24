@@ -200,7 +200,6 @@ export function GovernanceView(props: any) {
                                                         </Grid>
                                                     </TableCell>
                                                     <TableCell align="right">{(parseInt(resume['totalNet']))}</TableCell>
-                                                    <TableCell align="right"><Button href='https://realms.today/dao/GRAPE' target='_blank'><HowToVoteIcon /></Button></TableCell>
                                                 </TableRow> 
                                             </TableBody>
                                         </StyledTable>
