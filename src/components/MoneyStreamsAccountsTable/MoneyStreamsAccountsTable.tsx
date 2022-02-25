@@ -1,37 +1,83 @@
 
 import { MoneyStreamsDataTableProps }  from "../MoneyStreamsDataTable/MoneyStreamsDataTable"
-import "./MoneyStreamsAccountsTable.scss"
+import "./MoneyStreamsAccountsTable.scss";
 
 
 export interface MoneyStreamsAccountsTableProps {
-    sendOrRecieve: "send" | "recieve";
-    recievingMoneySinceDate: string;
-    USDCPerDay: number;
-    name: string;
-    dataObject: MoneyStreamsDataTableProps;
-    setSelectedMoneyStream?: (data: MoneyStreamsDataTableProps) => void;
+    selectedMoneyStream?: MoneyStreamListItemProps;
+    setSelectedMoneyStream?: (data: MoneyStreamListItemProps) => void;
+    inputObjectList: MoneyStreamListItemProps[];
 }
 
 
 function MoneyStreamsAccountsTable(props: MoneyStreamsAccountsTableProps){
     const {
-        sendOrRecieve,
-        recievingMoneySinceDate,
-        USDCPerDay,
-        name,
         setSelectedMoneyStream,
+        selectedMoneyStream,
+        inputObjectList,
     } = props;
+
+    
 
     return (
         <div className="accounts-table-container">  
             <div>Title row</div>
             <div>
-                main list
+                {
+                    inputObjectList.map((element) => {
+                        return(
+                            <MoneyStreamListItem onClick={() => setSelectedMoneyStream(element)} selectedMoneyStream={selectedMoneyStream} {...element}/>
+                        );
+                    })
+                }
             </div>
         </div>
     );
+}
+
+export interface MoneyStreamListItemProps {
+    sendOrRecieve: "send" | "recieve";
+    recievingMoneySinceDate: string;
+    USDCPerDay: number;
+    name: string;
+    dataObject: MoneyStreamsDataTableProps;
+    selectedMoneyStream?: MoneyStreamListItemProps;
+    onClick?: () => void;
+};
+
+function MoneyStreamListItem(props: MoneyStreamListItemProps){
+    const {
+        sendOrRecieve,
+        recievingMoneySinceDate,
+        USDCPerDay,
+        selectedMoneyStream,
+        name,
+        onClick
+    } = props;
 
 
+    // if(selectedMoneyStream.name === name){
+    //     return (
+    //         <div className={"highlit-row"} onClick={onClick}>
+    //             {name}
+    //         </div>
+    //     );
+    // }
+    // else {
+    //     return (
+    //         <div onClick={onClick}>
+    //             {name}
+    //         </div>
+    //     );
+    // }
+
+        return (
+            <div className={selectedMoneyStream.name === name ? "highlit-row" : ""} onClick={onClick}>
+                {name}
+            </div>
+        );
+
+    
 }
 
 

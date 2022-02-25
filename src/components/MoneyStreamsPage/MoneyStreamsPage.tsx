@@ -1,8 +1,9 @@
 
 import { MoneyStreamsDataTable, MoneyStreamsDataTableProps } from "../MoneyStreamsDataTable/MoneyStreamsDataTable";
-import { MoneyStreamsAccountsTable, MoneyStreamsAccountsTableProps } from "../MoneyStreamsAccountsTable/MoneyStreamsAccountsTable";
+import { MoneyStreamsAccountsTable, MoneyStreamsAccountsTableProps, MoneyStreamListItemProps } from "../MoneyStreamsAccountsTable/MoneyStreamsAccountsTable";
 import { useState } from "react";
 import "./MoneyStreamsPage.scss";
+import { element } from "prop-types";
 
 
 
@@ -14,11 +15,6 @@ function MoneyStreamsPage(){
 
 
     
-    
-
-
-    
-
     const fakeDataObject: MoneyStreamsDataTableProps  = {
         recievingFrom: "TKvGNWq33gFn9HVNaWRMDmjsqHmjzZAnreKS2xurVYy",
         sendingToo: null,
@@ -30,11 +26,11 @@ function MoneyStreamsPage(){
         streamID: "TKvGNWq33gFn9HVNaWRMDmjfLHmjzZAnreKS2xurVYy",
     };
 
-    const fakeAccountObject: MoneyStreamsAccountsTableProps = {
+    const fakeAccountObject: MoneyStreamListItemProps = {
         sendOrRecieve: "recieve",
         recievingMoneySinceDate: "",
         USDCPerDay: 15,
-        name: "",
+        name: "name1",
         dataObject: fakeDataObject,
     };
 
@@ -51,16 +47,16 @@ function MoneyStreamsPage(){
         streamID: "TKvGNWq33gFn9HVNaWRMDmjfLHmjzZAnreKS2xurVYy",
     };
 
-    const fakeAccountObject2: MoneyStreamsAccountsTableProps = {
+    const fakeAccountObject2: MoneyStreamListItemProps = {
         sendOrRecieve: "recieve",
         recievingMoneySinceDate: "",
         USDCPerDay: 15,
-        name: "",
+        name: "name2",
         dataObject: fakeDataObject2,
     };
 
 
-    const inputObjectList: MoneyStreamsAccountsTableProps[] = [
+    const inputObjectList: MoneyStreamListItemProps[] = [
         fakeAccountObject,
         fakeAccountObject2,
     ];
@@ -71,11 +67,21 @@ function MoneyStreamsPage(){
 
     return(
         <div className="page-container">
-            <MoneyStreamsAccountsTable {...selectedMoneyStream} setSelectedMoneyStream={(data: MoneyStreamsDataTableProps) => setSelectedMoneyStream}/>
-            <MoneyStreamsDataTable {...(selectedMoneyStream.dataObject)}/>
+            <MoneyStreamsAccountsTable 
+                inputObjectList={inputObjectList} 
+                setSelectedMoneyStream={(data: MoneyStreamListItemProps) => setSelectedMoneyStream(data)} 
+                selectedMoneyStream={selectedMoneyStream}
+            />
+            <MoneyStreamsDataTable 
+                {...(selectedMoneyStream.dataObject)}
+            />
+            
         </div>
     );
 }
 
 
-export {MoneyStreamsPage}
+
+
+
+export { MoneyStreamsPage }
