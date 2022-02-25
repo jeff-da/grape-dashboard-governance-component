@@ -55,29 +55,11 @@ function MoneyStreamListItem(props: MoneyStreamListItemProps){
         onClick
     } = props;
 
-
-    // if(selectedMoneyStream.name === name){
-    //     return (
-    //         <div className={"highlit-row"} onClick={onClick}>
-    //             {name}
-    //         </div>
-    //     );
-    // }
-    // else {
-    //     return (
-    //         <div onClick={onClick}>
-    //             {name}
-    //         </div>
-    //     );
-    // }
-
-        return (
-            <div className={selectedMoneyStream.name === name ? "highlit-row" : ""} onClick={onClick}>
-                {name}
-            </div>
-        );
-
-    
+    return (
+        <div className={selectedMoneyStream.name === name ? "highlit-row" : ""} onClick={onClick}>
+            {name}
+        </div>
+    );
 }
 
 
