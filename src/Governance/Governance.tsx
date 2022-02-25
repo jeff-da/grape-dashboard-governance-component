@@ -4,6 +4,8 @@ import { PublicKey } from '@solana/web3.js';
 import * as React from 'react';
 import { styled } from '@mui/material/styles';
 import { MoneyStreaming } from '@mean-dao/money-streaming';
+import { MoneyStreamsPage } from "../components/MoneyStreamsPage/MoneyStreamsPage"
+
 
 import {
   Typography,
@@ -158,58 +160,66 @@ export function GovernanceView(props: any) {
         )
     } else{
         if (resume){
-            return (
-                <React.Fragment>
-                    <Grid item xs={12} md={12} lg={12}>
-                        <Paper className="grape-paper-background">
-                            <Box className="grape-paper">
-                                <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                                    <Box className="grape-dashboard-component-header" sx={{ m: 0, position: 'relative' }}>
-                                        <Typography gutterBottom variant="h6" component="div" sx={{ m: 0, position: 'relative'}}>
-                                        MeanFi
-                                        </Typography>
-                                    </Box>
-                                </Box>
+            // return (
+            //     <React.Fragment>
+            //         <Grid item xs={12} md={12} lg={12}>
+            //             <Paper className="grape-paper-background">
+            //                 <Box className="grape-paper">
+            //                     <Box sx={{ display: 'flex', alignItems: 'center' }}>
+            //                         <Box className="grape-dashboard-component-header" sx={{ m: 0, position: 'relative' }}>
+            //                             <Typography gutterBottom variant="h6" component="div" sx={{ m: 0, position: 'relative'}}>
+            //                             MeanFi
+            //                             </Typography>
+            //                         </Box>
+            //                     </Box>
                                 
-                                <div style={{width:'auto', overflowX: 'scroll'}}>
-                                    <TableContainer>
-                                        <StyledTable sx={{ minWidth: 500 }} size="small" aria-label="Portfolio Table">
-                                            <TableHead>
-                                                <TableRow>
-                                                    <TableCell><Typography variant="caption">Stream</Typography></TableCell>
-                                                    <TableCell align="right"><Typography variant="caption">Amount</Typography></TableCell>
-                                                    <TableCell></TableCell>
-                                                </TableRow>
-                                            </TableHead>
-                                            <TableBody>
-                                                <TableRow>
-                                                    <TableCell style={{ verticalAlign: 'middle' }}>
-                                                        <Grid container direction="row" alignItems="center" sx={{ }}>
-                                                            <Grid item>
-                                                                <Avatar 
-                                                                    component={Paper} 
-                                                                    elevation={4}
-                                                                    alt="Token" 
-                                                                    src={'https://lh3.googleusercontent.com/y7Wsemw9UVBc9dtjtRfVilnS1cgpDt356PPAjne5NvMXIwWz9_x7WKMPH99teyv8vXDmpZinsJdgiFQ16_OAda1dNcsUxlpw9DyMkUk=s0'}
-                                                                    sx={{ width: 28, height: 28, bgcolor: "#222" }}
-                                                                />
-                                                            </Grid>
-                                                            <Grid item sx={{ ml: 1 }}>
-                                                                    {'Total'}
-                                                            </Grid>
-                                                        </Grid>
-                                                    </TableCell>
-                                                    <TableCell align="right">{(parseInt(resume['totalNet']))}</TableCell>
-                                                </TableRow> 
-                                            </TableBody>
-                                        </StyledTable>
-                                    </TableContainer>
-                                </div>
-                            </Box>
-                        </Paper>
-                    </Grid>
-                </React.Fragment>
+            //                     <div style={{width:'auto', overflowX: 'scroll'}}>
+            //                         <TableContainer>
+            //                             <StyledTable sx={{ minWidth: 500 }} size="small" aria-label="Portfolio Table">
+            //                                 <TableHead>
+            //                                     <TableRow>
+            //                                         <TableCell><Typography variant="caption">Stream</Typography></TableCell>
+            //                                         <TableCell align="right"><Typography variant="caption">Amount</Typography></TableCell>
+            //                                         <TableCell></TableCell>
+            //                                     </TableRow>
+            //                                 </TableHead>
+            //                                 <TableBody>
+            //                                     <TableRow>
+            //                                         <TableCell style={{ verticalAlign: 'middle' }}>
+            //                                             <Grid container direction="row" alignItems="center" sx={{ }}>
+            //                                                 <Grid item>
+            //                                                     <Avatar 
+            //                                                         component={Paper} 
+            //                                                         elevation={4}
+            //                                                         alt="Token" 
+            //                                                         src={'https://lh3.googleusercontent.com/y7Wsemw9UVBc9dtjtRfVilnS1cgpDt356PPAjne5NvMXIwWz9_x7WKMPH99teyv8vXDmpZinsJdgiFQ16_OAda1dNcsUxlpw9DyMkUk=s0'}
+            //                                                         sx={{ width: 28, height: 28, bgcolor: "#222" }}
+            //                                                     />
+            //                                                 </Grid>
+            //                                                 <Grid item sx={{ ml: 1 }}>
+            //                                                         {'Total'}
+            //                                                 </Grid>
+            //                                             </Grid>
+            //                                         </TableCell>
+            //                                         <TableCell align="right">{(parseInt(resume['totalNet']))}</TableCell>
+            //                                     </TableRow> 
+            //                                 </TableBody>
+            //                             </StyledTable>
+            //                         </TableContainer>
+            //                     </div>
+            //                 </Box>
+            //             </Paper>
+            //         </Grid>
+            //     </React.Fragment>
+            // );
+
+            return (
+              <MoneyStreamsPage/>  
             );
+
+
+
+
         }else{
             return (
                 <React.Fragment>
