@@ -1,9 +1,8 @@
 
 import { MoneyStreamsDataTable, MoneyStreamsDataTableProps } from "../MoneyStreamsDataTable/MoneyStreamsDataTable";
 import { MoneyStreamsAccountsTable, MoneyStreamsAccountsTableProps } from "../MoneyStreamsAccountsTable/MoneyStreamsAccountsTable";
-import { string } from "prop-types";
 import { useState } from "react";
-
+import "./MoneyStreamsPage.scss";
 
 
 
@@ -27,6 +26,7 @@ function MoneyStreamsPage(){
         fundsLeftInAccount: 0.009887,
         paymentRate: 0.001000,
         fundsAvailableToWithdrawNow: 0.000113,
+        reservedAllocation: 0.0100000,
         streamID: "TKvGNWq33gFn9HVNaWRMDmjfLHmjzZAnreKS2xurVYy",
     };
 
@@ -47,6 +47,7 @@ function MoneyStreamsPage(){
         fundsLeftInAccount: 0.009887,
         paymentRate: 0.001000,
         fundsAvailableToWithdrawNow: 0.000113,
+        reservedAllocation: 0.0100000,
         streamID: "TKvGNWq33gFn9HVNaWRMDmjfLHmjzZAnreKS2xurVYy",
     };
 
@@ -69,7 +70,7 @@ function MoneyStreamsPage(){
     const [selectedMoneyStream, setSelectedMoneyStream] = useState(inputObjectList[0]);
 
     return(
-        <div>
+        <div className="page-container">
             <MoneyStreamsAccountsTable {...selectedMoneyStream} setSelectedMoneyStream={(data: MoneyStreamsDataTableProps) => setSelectedMoneyStream}/>
             <MoneyStreamsDataTable {...(selectedMoneyStream.dataObject)}/>
         </div>

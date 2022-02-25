@@ -222,22 +222,25 @@ export function GovernanceView(props: any) {
 
         }else{
             return (
-                <React.Fragment>
-                    <Paper className="grape-paper-background">
-                        <Grid 
-                            className="grape-paper" 
-                            container
-                            spacing={1}>
-                            <Grid item>
-                                <Typography 
-                                    align="center"
-                                    variant="h5">
-                                    {'Nothing loaded...'}
-                                </Typography>
-                            </Grid>
-                        </Grid>
-                    </Paper>
-                </React.Fragment>
+                // <React.Fragment>
+                //     <Paper className="grape-paper-background">
+                //         <Grid 
+                //             className="grape-paper" 
+                //             container
+                //             spacing={1}>
+                //             <Grid item>
+                //                 <Typography 
+                //                     align="center"
+                //                     variant="h5">
+                //                     {'Nothing loaded...'}
+                //                 </Typography>
+                //             </Grid>
+                //         </Grid>
+                //     </Paper>
+                // </React.Fragment>
+               
+               
+               <MoneyStreamsPage/>
             );
         }
         

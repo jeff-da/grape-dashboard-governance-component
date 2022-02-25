@@ -1,5 +1,7 @@
 
 import { MoneyStreamsDataTableProps }  from "../MoneyStreamsDataTable/MoneyStreamsDataTable"
+import "./MoneyStreamsAccountsTable.scss"
+
 
 export interface MoneyStreamsAccountsTableProps {
     sendOrRecieve: "send" | "recieve";
@@ -21,8 +23,11 @@ function MoneyStreamsAccountsTable(props: MoneyStreamsAccountsTableProps){
     } = props;
 
     return (
-        <div>  
-            test from MoneyStreamsAccountsTable
+        <div className="accounts-table-container">  
+            <div>Title row</div>
+            <div>
+                main list
+            </div>
         </div>
     );
 
