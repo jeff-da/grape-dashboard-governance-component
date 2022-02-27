@@ -15,7 +15,7 @@
     "@jup-ag/react-hook": "^1.0.0-beta.1",
     "@ledgerhq/hw-transport-webusb": "^5.41.0",
     "@ledgerhq/react-native-hid": "^6.9.0",
-    "@mean-dao/money-streaming": "^1.7.8",
+    "@mean-dao/money-streaming": "file:../money-streaming",
     "@mui/icons-material": "^5.0.0",
     "@mui/lab": "^5.0.0-alpha.50",
     "@mui/material": "^5.0.0",

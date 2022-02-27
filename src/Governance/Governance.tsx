@@ -22,6 +22,7 @@ import {
 } from '@mui/material/';
 
 import HowToVoteIcon from '@mui/icons-material/HowToVote';
+import { WalletIcon } from '@solana/wallet-adapter-react-ui';
 
 const StyledTable = styled(Table)(({ theme }) => ({
     '& .MuiTableCell-root': {
@@ -56,19 +57,23 @@ export function GovernanceView(props: any) {
 
             const mspAccount = new PublicKey("H6wJxgkcc93yeUFnsZHgor3Q3pSWgGpEysfqKrwLtMko");
             const moneyStreaming = new MoneyStreaming("https://api.mainnet-beta.solana.com", mspAccount);
-            const wallet = new PublicKey("DjsyGs6HpszmH9N4UJgr1huBrWgysvUc1gSBk8MPbNfY");
+            const wallet = publicKey // new PublicKey("BNLV8QKPH8MK7rsn2nj317wL3WZ9HP5RoqXLSLC81mwv");
 
             console.log(moneyStreaming)
 
             const listStreamsObject = {
-                treasurer: wallet
+                // treasurer: wallet,
+                beneficiary: wallet
             }
 
             let treasurerStreams = await moneyStreaming.listStreams(listStreamsObject);
             
+            console.log('sd')
             console.log(treasurerStreams)
+            let getStreamTest = await moneyStreaming.getStream(wallet)
+            console.log(getStreamTest)
 
-            let cachedStreams = await moneyStreaming.refreshStreams(treasurerStreams, wallet, wallet);
+            let cachedStreams = await moneyStreaming.refreshStreams(treasurerStreams, undefined, undefined, undefined, undefined, true);
 
             let resume: any = {
                 totalNet: 0,
@@ -86,8 +91,8 @@ export function GovernanceView(props: any) {
                         : stream.treasurerAddress === wallet.toBase58();
             
                 let streamBalance = 0;
-
-                console.log(stream)
+                console.log('addy')
+                console.log(stream.treasurerAddress)
             
                 if (streamIsOutgoing) {
                     streamBalance = stream.escrowUnvestedAmount;
