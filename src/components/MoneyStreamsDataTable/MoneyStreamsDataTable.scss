@@ -1,0 +1,106 @@
+@import '../../vars.scss';
+
+
+$padding-between-rows: 20px;
+$padding-between-text-and-value: 4px;
+
+.data-table-container {
+    width: 50%;
+    padding: 15px;
+    border-radius: 25px;
+    border: 2px solid $small-text-color;
+    display: grid; 
+    grid-template-areas: 
+    "RecievingFromText PaymentRateText"
+    "RecievingFromValue PaymentRateValue"
+    "StartedText ."
+    "StartedValue ."
+    "FundsLeftText ."
+    "FundsLeftValue ."
+    "ReservedAllocationText ."
+    "ReservedAllocationValue ."
+    "FundsAvailableToWithdrawText ."
+    "FundsAvailableToWithdrawValue ."
+    "WithdrawFunds WithdrawFunds"
+    "StreamID StreamID"
+    ;
+    grid-template-columns: 1fr 1fr;
+
+    .recieving-from-text{
+        @include small-text;
+        padding-bottom: $padding-between-text-and-value;
+        grid-area: RecievingFromText;
+    }
+    .recieving-from-value{
+        @include medium-text;
+        padding-bottom: $padding-between-rows;
+        grid-area: RecievingFromValue;
+    }
+
+    .payment-rate-text{
+        @include small-text;
+        padding-bottom: $padding-between-text-and-value;
+        grid-area: PaymentRateText;
+    }
+    .payment-rate-value{
+        @include medium-text;
+        padding-bottom: $padding-between-rows;
+        grid-area: PaymentRateValue;
+    }
+
+    .started-text{
+        @include small-text;
+        padding-bottom: $padding-between-text-and-value;
+        grid-area: StartedText;
+    }
+    .started-value{
+        @include medium-text;
+        padding-bottom: $padding-between-rows;
+        grid-area: StartedValue;
+    }
+
+    .funds-left-text{
+        @include small-text;
+        padding-bottom: $padding-between-text-and-value;
+        grid-area: FundsLeftText;
+    }
+    .funds-left-value{
+        @include medium-text;
+        padding-bottom: $padding-between-rows;
+        grid-area: FundsLeftValue;
+    }
+
+    .reserved-allocation-text{
+        @include small-text;
+        padding-bottom: $padding-between-text-and-value;
+        grid-area: ReservedAllocationText;
+    }
+    .reserved-allocation-value{
+        @include medium-text;
+        padding-bottom: $padding-between-rows;
+        grid-area: ReservedAllocationValue;
+    }
+
+    .funds-available-to-withdraw-text{
+        @include small-text;
+        padding-bottom: $padding-between-text-and-value;
+        grid-area: FundsAvailableToWithdrawText;
+    }
+    .funds-available-to-withdraw-value{
+        @include large-text;
+        grid-area: FundsAvailableToWithdrawValue;
+        padding-bottom: $padding-between-rows;
+    }
+
+    .withdraw-funds{
+        grid-area: WithdrawFunds;
+    }
+
+    .stream-id{
+        @include small-text;
+        padding-bottom: $padding-between-rows;
+        grid-area: StreamID;
+        justify-self: center;
+    }
+
+}

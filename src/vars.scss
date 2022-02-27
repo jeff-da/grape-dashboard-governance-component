@@ -1,0 +1,21 @@
+
+
+$small-text-size: 12px;
+$medium-text-size: 18px;
+$large-text-size: 30px;
+
+$small-text-color: LightSteelBlue;
+$other-text-color: white;
+
+@mixin small-text {
+    font-size: $small-text-size;
+    color: $small-text-color;
+}
+
+@mixin medium-text {
+    font-size: $medium-text-size
+}
+
+@mixin large-text {
+    font-size: $large-text-size
+}
