@@ -9,3 +9,19 @@ Replicate the Meanfi dashboard such that we can do the following
 - The user should be able to re-fresh the money streams via a button
 - The user should be able to withdraw funds via a withdraw button
 - The general design should mimic the design of the current mean dashboard. 
+
+
+
+TODO:
+Aaron
+- Withdraws
+    - Material UI button inverted red
+    - Modal popup functionality
+    - Modal design stuffs
+- Select streams stuff
+    - Design matching 
+    - Hookup to actual data streams and interface changing
+- Hookup frontend and backend / change frontend interfaces to better reflect object stuffs
+
+Jeff
+- 
