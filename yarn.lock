@@ -2433,6 +2433,21 @@
     prompt-sync "^4.2.0"
     yaml "^1.10.2"
 
+"@mean-dao/money-streaming@file:../money-streaming":
+  version "1.7.7"
+  dependencies:
+    "@project-serum/anchor" "^0.18.2"
+    "@solana/spl-token" "^0.1.8"
+    "@solana/web3.js" "^1.30.2"
+    bn.js "^5.2.0"
+    borsh "^0.6.0"
+    buffer "^6.0.3"
+    buffer-layout "^1.2.2"
+    dotenv "10.0.0"
+    moment "^2.29.1"
+    prompt-sync "^4.2.0"
+    yaml "^1.10.2"
+
 "@mercurial-finance/optimist@~0.1.0":
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/@mercurial-finance/optimist/-/optimist-0.1.0.tgz#853f8032f4a48a94ae91d6a39251e975ebcfbe0f"
